@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Author" name="author">
+    <!-- dynamic -->
+    <meta content="Write Site Description" name="description">
+    <meta content="keyword1,keyword-2,keyword 3" name="keywords">
+    <!-- dynamic -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/gif" sizes="16x16">
+    <link rel="apple-touch-icon" href="assets/img/favicon.png">
+
+    <title>Blogs | Grammar Pathshala</title>
+
+    <!-- dynamic -->
+    <link href="/assets/css/output.css" rel="stylesheet">
+    <!-- dynamic -->
+    <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="overflow-y-hidden overflow-visible bg-slate-100">
+
+    <!-- Top Navbar Start -->
+    <div class="bg-white sticky top-0 z-50 border-b-2">
+        <div class="container mx-auto navbar">
+            <div class="flex-none block lg:hidden">
+                <label for="my-drawer" class="mr-3 cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered text-lg active:text-violet-700"></i>
+                </label>
+            </div>
+            <div class="navbar-start">
+                <a href="/">
+                    <img class="w-[8.5rem]" src="/assets/images/logo.svg" alt="logo">
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <div class="form-control">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search for tag, krywords, articles, and many more"
+                            class="input focus:outline-none focus:outline-offset-0 input-bordered focus:border-primary text-base w-96" />
+                        <button class="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <a href="/exercise-home.html" class="btn bg-blue-500 border-none font-manrope">Exercises</a>
+            </div>
+        </div>
+    </div>
+    <!-- Top Navbar End -->
+
+    <div class="flex text-gray-900 container mx-auto h-screen">
+
+        <!--Desktop Sidebar Start -->
+        <aside class="flex-shrink-0 hidden w-64 border-r lg:block">
+            <div class="flex flex-col h-full">
+
+                <!-- Sidebar Contents Start-->
+                <nav aria-label="Main" class="flex-1 pt-7 px-2 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                    <!-- dynamic Parent Start -->
+                    <a href="/"
+                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="ml-3 text-sm font-medium"> Home </span>
+                    </a>
+                    <!-- dynamic Parent End -->
+
+                    <!-- dynamic Parent with child Start -->
+                    <details class="group">
+                        <summary
+                            class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
+                            <i class="fa-solid fa-hashtag"></i>
+
+                            <span class="ml-3 text-sm font-medium"> Writing </span>
+
+                            <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </summary>
+
+                        <nav class="mt-1.5 ml-8 flex flex-col">
+                            <a href="/blog.html"
+                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span class="ml-3 text-sm font-medium"> Paragraph </span>
+                            </a>
+                        </nav>
+                    </details>
+                    <!-- dynamic Parent with child End -->
+                    <hr class="!my-5">
+                    <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
+
+                    <!-- dynamic Tranding TOPICS Start -->
+                    <a href=""
+                        class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                        <div>
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="ml-3 text-sm font-medium">React</span>
+                        </div>
+                        <div class="bg-gray-200 px-3 py-1 rounded-full text-success text-sm font-semibold">+112
+                        </div>
+                    </a>
+                    <!-- dynamic Tranding TOPICS End -->
+
+                </nav>
+                <!-- Sidebar Contents End-->
+
+                <!-- Sidebar footer Start -->
+
+                <!-- Sidebar footer End -->
+            </div>
+        </aside>
+        <!--Desktop Sidebar End -->
+
+        <!-- Right Side Wrapper Start -->
+        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+            <div class="drawer">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content pt-10">
+
+                    <main>
+                        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+
+                            <div class="container mx-auto max-w-4xl px-4 mb-16 flex justify-center items-center">
+                                <div class="hidden md:block">
+                                    <div
+                                        class="bg-green-100 flex justify-center items-center h-14 w-14 rounded-md mr-4">
+                                        <i class="text-green-500 text-2xl fa-solid fa-hashtag"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="text-3xl font-semibold text-gray-900">Parts of Speech: Noun, Pronoun
+                                    </h2>
+                                    <p class="text-base font-medium text-gray-500"><i
+                                            class="fa-solid fa-newspaper mr-2"></i>27.3K Articles
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Exercise Section Start -->
+                            <section class="max-w-4xl select-none">
+                                <form action="">
+
+                                    <div class="shadow-sm transition rounded-md px-5 py-5 mb-8 bg-gray-50 border">
+
+                                        <h3 class="text-xl font-semibold text-gray-700 px-3 hover:text-gray-900">
+                                            <span>1.</span> Application
+                                            to practice the knowledge in React, and TailWind CSS, and in the
+                                            future start the studies in Node?
+                                        </h3>
+
+                                        <div class="form-control mt-5">
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="ans" class="mr-3 radio radio-primary" />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="ans" class="mr-3 radio radio-primary" />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="ans" class="mr-3 radio radio-primary" />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="ans" class="mr-3 radio radio-primary" />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="shadow-sm transition rounded-md px-5 py-5 mb-8 bg-gray-50 border">
+
+                                        <h3 class="text-xl font-semibold text-gray-700 px-3 hover:text-gray-900">
+                                            <span>2.</span> Application
+                                            to practice the knowledge in React, and TailWind CSS, and in the
+                                            future start the studies in Node?
+                                        </h3>
+
+                                        <div class="form-control mt-5">
+                                            <!-- use class 'right-ans'/'wrong-ans' to highlight-->
+                                            <label
+                                                class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 wrong-ans">
+                                                <input type="radio" name="a" class="mr-3 radio radio-primary" checked
+                                                    disabled />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label
+                                                class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 right-ans">
+                                                <input type="radio" name="b" class="mr-3 radio radio-primary" checked />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="c" class="mr-3 radio radio-primary"
+                                                    disabled />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
+                                                <input type="radio" name="d" class="mr-3 radio radio-primary"
+                                                    disabled />
+                                                <span class="text-gray-500 text-base"> knowledge in React, and TailWind
+                                                    CSS,
+                                                    and in the
+                                                    future start the studies in Node</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-end mb-8">
+                                        <input type="submit" value="Submit"
+                                            class="w-full md:w-auto px-10 btn bg-blue-700 hover:bg-blue-500 border-gray-200 hover:border-gray-200 cursor-pointer"></input>
+                                    </div>
+                                </form>
+
+                                <!-- modal -->
+                                <label id="resultBtn" for="my-modal-6"></label>
+
+                                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                <div class="modal modal-bottom sm:modal-middle">
+                                    <div class="modal-box text-center bg-[#F1F5F9]">
+
+                                        <div class="text-3xl radial-progress bg-primary text-primary-content border-4 border-primary"
+                                            style="--value:70; --size:12rem">70%</div>
+                                        <h3 class="font-bold text-2xl my-3">Congratulations!</h3>
+                                        <h3 class="text-base my-3">You did a great job in the test</h3>
+
+                                        <div class="modal-action flex justify-center">
+                                            <label for="my-modal-6" class="btn">Continue</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- modal -->
+                            </section>
+                            <!-- Exercise Section End -->
+
+                            <!-- Footer Section Start -->
+                            <footer
+                                class="flex md:flex-row justify-between flex-col items-center footer px-10 pt-10 bg-base-200 text-base-content bottom-0 pb-20 md:pb-24">
+                                <p class="md:order-1 order-3 font-medium">© Softavia
+                                    <script>
+                                        document.write(new Date().getFullYear());
+                                    </script> | All rights reserved
+                                </p>
+                                <a class="md:order-2 order-1" href="/">
+                                    <img class="w-[8.5rem]" src="/assets/images/logo.svg" alt="logo">
+                                </a>
+                                <p class="flex md:order-3 order-2 font-medium">Developed by <a
+                                        class="text-blue-500 hover:text-blue-700"
+                                        href="https://shahriarshafin.github.io/" target="_blank"
+                                        rel="noopener noreferrer">SHAFIN</a> & <a
+                                        class="text-blue-500 hover:text-blue-700"
+                                        href="https://shahriarshafin.github.io/" target="_blank"
+                                        rel="noopener noreferrer">SABBIR</a></p>
+                            </footer>
+                            <!-- Footer Section End -->
+
+                    </main>
+                </div>
+
+                <!-- Mobile Sidebar Wrapper Start -->
+                <div class="drawer-side">
+                    <label for="my-drawer" class="drawer-overlay"></label>
+                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+
+                        <!-- Sidebar Contents Mobile Start-->
+                        <nav aria-label="Main" class="flex-1 pt-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                            <!-- dynamic Parent Start -->
+                            <a href="/"
+                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span class="ml-3 text-sm font-medium"> Home </span>
+                            </a>
+                            <!-- dynamic Parent End -->
+
+                            <!-- dynamic Parent with child Start -->
+                            <details class="group">
+                                <summary
+                                    class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
+                                    <i class="fa-solid fa-hashtag"></i>
+
+                                    <span class="ml-3 text-sm font-medium"> Writing </span>
+
+                                    <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </span>
+                                </summary>
+
+                                <nav class="mt-1.5 ml-8 flex flex-col">
+                                    <a href="/blog.html"
+                                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                        <i class="fa-solid fa-angles-right"></i>
+                                        <span class="ml-3 text-sm font-medium"> Paragraph </span>
+                                    </a>
+                                </nav>
+                            </details>
+                            <!-- dynamic Parent with child End -->
+                            <hr class="!my-5">
+                            <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
+
+                            <!-- dynamic Tranding TOPICS Start -->
+                            <a href=""
+                                class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                <div>
+                                    <i class="fa-solid fa-bolt border-b-indigo-700"></i>
+                                    <span class="ml-3 text-sm font-medium">React</span>
+                                </div>
+                                <div class="bg-gray-100 px-3 py-1 rounded-full text-success text-sm font-semibold">+112
+                                </div>
+                            </a>
+                            <!-- dynamic Tranding TOPICS End -->
+
+                        </nav>
+                        <!-- Sidebar Contents Mobile End-->
+
+                    </ul>
+                </div>
+                <!-- Mobile Sidebar Wrapper Start -->
+            </div>
+
+            <!-- Main Footer Start -->
+
+            <!-- Main Footer End -->
+        </div>
+        <!-- Right Side Wrapper End -->
+
+    </div>
+    <script>
+        const btnClick = () => document.getElementById("resultBtn").click();
+        btnClick();
+    </script>
+</body>
+
+
+</html>

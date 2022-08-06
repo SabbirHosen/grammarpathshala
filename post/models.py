@@ -19,3 +19,13 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Trending(models.Model):
+    category = models.ForeignKey(
+        SubCategory, on_delete=models.CASCADE, verbose_name='Select Trending Category', blank=False, null=False
+    )
+    priority = models.IntegerField(blank=False, null=False, verbose_name='Add priority of your Category')
+
+    def __str__(self):
+        return self.category.name

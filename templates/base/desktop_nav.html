@@ -1,0 +1,103 @@
+{% load static %}
+    <!-- Top Navbar Start -->
+    <div class="bg-white sticky top-0 z-50 border-b-2">
+        <div class="container mx-auto navbar">
+            <div class="flex-none block lg:hidden">
+                <label for="my-drawer" class="mr-3 cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered text-lg active:text-violet-700"></i>
+                </label>
+            </div>
+            <div class="navbar-start">
+                <a href="{% url 'home:home' %}">
+                    <img class="w-[8.5rem]" src="{% static 'assets/images/logo.svg' %}" alt="logo">
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <div class="form-control">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search for articles"
+                            class="input focus:outline-none focus:outline-offset-0 input-bordered focus:border-primary text-base w-96" />
+                        <button class="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <a href="/exercise-home.html" class="btn bg-blue-500 border-none font-manrope">Exercises</a>
+            </div>
+        </div>
+    </div>
+    <!-- Top Navbar End -->
+
+    <div class="flex text-gray-900 container mx-auto h-screen">
+
+        <!--Desktop Sidebar Start -->
+        <aside class="flex-shrink-0 hidden w-64 border-r lg:block">
+            <div class="flex flex-col h-full">
+
+                <!-- Sidebar Contents Start-->
+                <nav aria-label="Main" class="flex-1 pt-7 px-2 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                    <!-- dynamic Parent Start -->
+                    <a href="{% url 'home:home' %}"
+                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 selected">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="ml-3 text-sm font-medium"> Home </span>
+                    </a>
+                    <!-- dynamic Parent End -->
+
+                    <!-- dynamic Parent with child Start -->
+                    {% for nav_item in nav %}
+                    <details class="group">
+                        <summary
+                            class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
+                            <i class="fa-solid fa-hashtag"></i>
+
+                            <span class="ml-3 text-sm font-medium"> {{ nav_item.menu }} </span>
+
+                            <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </summary>
+                        {% for sub in nav_item.submenu %}
+                        <nav class="mt-1.5 ml-8 flex flex-col">
+                            <a href="{% url 'post:post_list' sub.c_id%}"
+                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span class="ml-3 text-sm font-medium"> {{ sub.name }} </span>
+                            </a>
+                        </nav>
+                        {% endfor %}
+                    </details>
+                    {% endfor %}
+                    <!-- dynamic Parent with child End -->
+                    <hr class="!my-5">
+                    <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
+
+                    <!-- dynamic Tranding TOPICS Start -->
+                {% for trend in trending_topics %}
+                    <a href="{% url 'post:post_list' trend.trend_id%}"
+                        class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                        <div>
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="ml-3 text-sm font-medium">{{ trend.trend_name }}</span>
+                        </div>
+                        <div class="bg-gray-200 px-3 py-1 rounded-full text-success text-sm font-semibold">+{{ trend.trend_count }}
+                        </div>
+                    </a>
+                {% endfor %}
+                    <!-- dynamic Tranding TOPICS End -->
+
+                </nav>
+                <!-- Sidebar Contents End-->
+
+                <!-- Sidebar footer Start -->
+
+                <!-- Sidebar footer End -->
+            </div>
+        </aside>
+        <!--Desktop Sidebar End -->

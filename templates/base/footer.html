@@ -1,0 +1,19 @@
+{% load static %}
+<footer
+    class="flex md:flex-row justify-between flex-col items-center footer px-10 pt-10 bg-base-200 text-base-content bottom-0 pb-20 md:pb-24">
+    <p class="md:order-1 order-3 font-medium">© Grammar Pathshala
+        <script>
+            document.write(new Date().getFullYear());
+        </script> | All rights reserved
+    </p>
+    <a class="md:order-2 order-1" href="/">
+        <img class="w-[8.5rem]" src="{% static 'assets/images/logo.svg' %}" alt="logo">
+    </a>
+    <p class="flex md:order-3 order-2 font-medium">Developed by <a
+            class="text-blue-500 hover:text-blue-700"
+            href="https://shahriarshafin.github.io/" target="_blank"
+            rel="noopener noreferrer">SHAFIN</a> & <a
+            class="text-blue-500 hover:text-blue-700"
+            href="https://shahriarshafin.github.io/" target="_blank"
+            rel="noopener noreferrer">SABBIR</a></p>
+</footer>

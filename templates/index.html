@@ -1,0 +1,537 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Author" name="author">
+    <!-- Meta tag for social site sharing -->
+    <meta
+            content="Learning a second language involves not just learning new words for the same concepts, but also a new way of thinking. Online English blog to suit your requirements and learning objectives. Learn to speak with confidence in your academics, at work, and in your study"
+            name="description">
+    <meta content="grammar pathshala, grammar, pathshala, english, learn" name="keywords">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Grammar Pathshala">
+    <meta itemprop="description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta itemprop="image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://grammarpathshala.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Grammar Pathshala">
+    <meta property="og:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta property="og:image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Grammar Pathshala">
+    <meta name="twitter:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta name="twitter:image" content="{% static 'assets/images/logo.svg' %}">
+    <!-- Meta tag for social site sharing -->
+    <link rel="icon" href="{% static 'assets/img/favicon.png' %}" type="image/gif" sizes="16x16">
+    <link rel="apple-touch-icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <title>Home | Grammar Pathshala</title>
+
+    <!-- dynamic -->
+    <link href="{% static 'assets/css/output.css' %}" rel="stylesheet">
+    <!-- dynamic -->
+    <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="overflow-y-hidden overflow-visible bg-slate-100">
+
+    <!-- Top Navbar Start -->
+    <div class="bg-white sticky top-0 z-50 border-b-2">
+        <div class="container mx-auto navbar">
+            <div class="flex-none block lg:hidden">
+                <label for="my-drawer" class="mr-3 cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered text-lg active:text-violet-700"></i>
+                </label>
+            </div>
+            <div class="navbar-start">
+                <a href="{% url 'home:home' %}">
+                    <img class="w-[8.5rem]" src="{% static 'assets/images/logo.svg' %}" alt="logo">
+                </a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <div class="form-control">
+                    <div class="input-group">
+                        <input type="text" placeholder="Search for tag, krywords, articles, and many more"
+                            class="input focus:outline-none focus:outline-offset-0 input-bordered focus:border-primary text-base w-96" />
+                        <button class="btn btn-square">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <a href="/exercise-home.html" class="btn bg-blue-500 border-none font-manrope">Exercises</a>
+            </div>
+        </div>
+    </div>
+    <!-- Top Navbar End -->
+
+    <div class="flex text-gray-900 container mx-auto h-screen">
+
+        <!--Desktop Sidebar Start -->
+        <aside class="flex-shrink-0 hidden w-64 border-r lg:block">
+            <div class="flex flex-col h-full">
+
+                <!-- Sidebar Contents Start-->
+                <nav aria-label="Main" class="flex-1 pt-7 px-2 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                    <!-- dynamic Parent Start -->
+                    <a href="{% url 'home:home' %}"
+                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 selected">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span class="ml-3 text-sm font-medium"> Home </span>
+                    </a>
+                    <!-- dynamic Parent End -->
+
+                    <!-- dynamic Parent with child Start -->
+                    {% for nav_item in nav %}
+                    <details class="group">
+                        <summary
+                            class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
+                            <i class="fa-solid fa-hashtag"></i>
+
+                            <span class="ml-3 text-sm font-medium"> {{ nav_item.menu }} </span>
+
+                            <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </span>
+                        </summary>
+                        {% for sub in nav_item.submenu %}
+                        <nav class="mt-1.5 ml-8 flex flex-col">
+                            <a href="/blog.html"
+                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                <i class="fa-solid fa-angles-right"></i>
+                                <span class="ml-3 text-sm font-medium"> {{ sub.name }} </span>
+                            </a>
+                        </nav>
+                        {% endfor %}
+                    </details>
+                    {% endfor %}
+                    <!-- dynamic Parent with child End -->
+                    <hr class="!my-5">
+                    <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
+
+                    <!-- dynamic Tranding TOPICS Start -->
+                {% for trend in trending_topics %}
+                    <a href=""
+                        class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                        <div>
+                            <i class="fa-solid fa-bolt"></i>
+                            <span class="ml-3 text-sm font-medium">{{ trend.trend_name }}</span>
+                        </div>
+                        <div class="bg-gray-200 px-3 py-1 rounded-full text-success text-sm font-semibold">+{{ trend.trend_count }}
+                        </div>
+                    </a>
+                {% endfor %}
+                    <!-- dynamic Tranding TOPICS End -->
+
+                </nav>
+                <!-- Sidebar Contents End-->
+
+                <!-- Sidebar footer Start -->
+
+                <!-- Sidebar footer End -->
+            </div>
+        </aside>
+        <!--Desktop Sidebar End -->
+
+        <!-- Right Side Wrapper Start -->
+        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+            <div class="drawer">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content pt-10">
+
+                    <main>
+                        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+
+                            <!-- Hero Section Start -->
+                            <section>
+                                <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                                    <div>
+                                        <div
+                                            class="bg-green-600 text-white px-4 py-3 font-bold text-sm rounded-full tracking-wide inline-flex">
+                                            THINK | LEARN | PRACTICE
+                                        </div>
+
+                                        <h1 class="text-6xl font-black leading-none my-10">Build a Deep, Solid <span
+                                                class="inline bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7c3aed_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-6xl leading-[1.2] tracking-tighter text-transparent lg:text-left">
+                                                Understanding in English!</span></h1>
+                                        <h2 class="text-xl font-medium leading-tight text-slate-600 mb-10">
+                                            Learning a second language involves not just learning new words for the same
+                                            concepts, but also a new way of thinking.
+                                            Online English blog to suit your requirements and learning objectives. Learn
+                                            to speak with confidence in your academics, at work, and in your study
+
+                                        </h2>
+                                    </div>
+
+                                    <div>
+                                        <img src="{% static 'assets/images/hero-bg.webp' %}" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="hidden md:block">
+                                    <div class="stats shadow flex rounded-none mb-8">
+
+                                        <div class="stat">
+                                            <div class="stat-figure text-primary">
+                                                <i class="fa-solid fa-newspaper text-3xl"></i>
+                                            </div>
+                                            <div class="stat-title">Total Articles</div>
+                                            <div class="stat-value text-primary">426</div>
+                                            <div class="stat-desc">Explore Yourself Confidently</div>
+                                        </div>
+
+                                        <div class="stat">
+                                            <div class="stat-figure text-secondary">
+                                                <i class="fa-solid fa-list-check text-3xl"></i>
+                                            </div>
+                                            <div class="stat-title">Total Exercises</div>
+                                            <div class="stat-value text-secondary">700</div>
+                                            <div class="stat-desc">Unlimited Practice</div>
+                                        </div>
+
+                                        <div class="stat">
+                                            <div class="stat-figure text-success">
+                                                <i class="fa-solid fa-award text-3xl"></i>
+                                            </div>
+                                            <div class="stat-value">100%</div>
+                                            <div class="stat-title">Free to Learn</div>
+                                            <div class="stat-desc text-secondary">Learn Without limits</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Hero Section End -->
+
+                            <!-- Feature Section Start -->
+                            <section>
+                                <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+
+                                    <div class="bg-violet-50 py-11 px-14 rounded-2xl">
+                                        <div class="flex items-center justify-center">
+                                            <div
+                                                class="flex h-32 w-32 items-center justify-center rounded-full bg-white p-4 text-yellow-500 shadow-xl text-6xl">
+                                                <i class="fa-solid fa-lightbulb"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mt-8">
+                                            <h3 class="mb-4 text-2xl font-bold text-slate-800 text-center">Motivation
+                                            </h3>
+                                            <p class="text-center text-slate-800">This website makes it incredibly
+                                                simple to learn English grammar through brainstorming and interaction
+                                                without the use of conventional methods.
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-rose-50 py-11 px-14 rounded-2xl">
+                                        <div class="flex items-center justify-center">
+                                            <div
+                                                class="flex h-32 w-32 items-center justify-center rounded-full bg-white p-4 text-rose-500 shadow-xl text-6xl">
+                                                <i class="fa-solid fa-bolt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mt-8">
+                                            <h3 class="mb-4 text-2xl font-bold text-slate-800 text-center">Get Immersed
+                                            </h3>
+                                            <p class="text-center text-slate-800">Being among people who speak that
+                                                language is the best method to learn it. Through interactive exercises
+                                                and real-world examples, we assist you in learning effectively.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bg-fuchsia-50 py-11 px-14 rounded-2xl">
+                                        <div class="flex items-center justify-center">
+                                            <div
+                                                class="flex h-32 w-32 items-center justify-center rounded-full bg-white p-4 text-fuchsia-500 shadow-xl text-6xl">
+                                                <i class="fa-solid fa-brain"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mt-8">
+                                            <h3 class="mb-4 text-2xl font-bold text-slate-800 text-center">Brainstorming
+                                            </h3>
+                                            <p class="text-center text-slate-800">Brainstorming is the creation of
+                                                random thoughts based on a given subject. These concepts are not edited
+                                                or arranged in any way. People who do these activities diligently may
+                                                gradually improve their IQ.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Feature Section End -->
+
+                            <!-- Latest Post Start -->
+                            <section>
+                                <div class="grid grid-cols-1 gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                                    <ul class="space-y-8">
+                                        <li class="text-sm leading-6">
+                                            <div class="relative flex flex-col-reverse bg-slate-50 rounded-lg p-6  ">
+                                                <p class="mt-3 text-slate-700">React, and TailWind CSS, and in the
+                                                    future start the studies in Node
+                                                </p>
+
+                                                <div class="flex items-center space-x-4">
+                                                    <div class="flex-auto">
+                                                        <div class="text-base text-slate-900 font-semibold ">
+                                                            <a href="/blog-details.html">
+                                                                Knowledge in React, and TailWind CSS,
+                                                                and in the
+                                                                future start the studies in Node</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="space-y-8 hidden sm:block">
+                                        <div class="relative flex flex-col-reverse bg-slate-50 rounded-lg p-6  ">
+                                            <p class="mt-3 text-slate-700 "> Application
+                                                to practice the knowledge in React, and TailWind CSS, and in the
+                                                future start the studies in Node future start the studies in Node
+                                                Application
+                                                to practice the knowledge in React, and TailWind CSS,
+                                                and in the
+                                                future start the studies in
+                                            </p>
+
+                                            <div class="flex items-center space-x-4">
+                                                <div class="flex-auto">
+                                                    <div class="text-base text-slate-900 font-semibold ">
+                                                        <a href="/blog-details.html">
+                                                            The knowledge in React, and TailWind CSS,
+                                                            and in the
+                                                            Node</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+
+                                    <ul class="space-y-8 hidden lg:block">
+                                        <div class="relative flex flex-col-reverse bg-slate-50 rounded-lg p-6  ">
+                                            <p class="mt-3 text-slate-700 ">
+                                                to practice the knowledge in React, and TailWind CSS, and in the
+                                                future start the studies in Node to practice the knowledge in React, and
+                                                TailWind CSS, and in the
+                                                future start the studies in Node
+                                            </p>
+
+                                            <div class="flex items-center space-x-4">
+                                                <div class="flex-auto">
+                                                    <div class="text-base text-slate-900 font-semibold ">
+                                                        <a href="/blog-details.html">
+                                                            Application
+                                                            to practice the knowledge in React, and TailWind CSS,
+                                                            and in theode</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </section>
+                            <!-- Latest Post End -->
+
+                            <!-- Teacher Intro Start -->
+                            <section class="bg-gray-100 flex flex-wrap items-center justify-center">
+                                <div class="bg-white rounded shadow-lg transform duration-200 easy-in-out">
+                                    <div class="h-2/4 sm:h-64 overflow-hidden">
+                                        <img class="w-full rounded-t"
+                                            src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1590&q=80"
+                                            alt="cover-photo" />
+                                    </div>
+                                    <div class="flex justify-start px-5 -mt-12 mb-5">
+                                        <span clspanss="block relative h-32 w-32">
+                                            <img alt="teacher_image"
+                                                src="https://media-exp1.licdn.com/dms/image/C5603AQHKCW8cON0HdA/profile-displayphoto-shrink_200_200/0/1614262165131?e=1662595200&v=beta&t=KVeVFS3MO5Jwr0RR1LDD08YmIwibr-bkhAaa2e1cAtI"
+                                                class="mx-auto object-cover rounded-full h-24 w-24 bg-white p-1" />
+                                        </span>
+                                    </div>
+
+                                    <div class="px-7 mb-8">
+                                        <h2 class="text-3xl font-bold text-green-800 ">Sabbir Hosen</h2>
+                                        <p class="text-gray-400 mt-2 ">Backend Dev | Data Scientist</p>
+                                        <p class="mt-2 text-gray-600 ">Lorem ipsum dolor sit amet
+                                            consectetur, adipisicing elit.
+                                            Asperiores molestiae vitae odio non commodi itaque quisquam incidunt
+                                            doloribus fugit nesciunt vitae odio non commodi itaque quisquam incidunt
+                                            doloribus fugit nesciunt.</p>
+                                        <div
+                                            class="justify-center px-4 py-2 cursor-pointer bg-green-900 max-w-min mx-auto mt-8 rounded-lg text-gray-300 hover:bg-green-800 hover:text-gray-100">
+                                            sabbirhosen@gmail.com
+                                        </div>
+                                        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8">
+                                            <button
+                                                class="text-green-900 hover:text-green-700 p-1 sm:p-2 inline-flex items-center ">
+                                                <svg class="w-7 h-7 fill-current" role="img"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                                </svg>
+                                            </button>
+                                            <button
+                                                class="text-green-900 hover:text-green-700 p-1 sm:p-2 inline-flex items-center ">
+                                                <svg class="w-7 h-7 fill-current" role="img" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+                                                </svg>
+                                            </button>
+                                            <button
+                                                class="text-green-900 hover:text-green-700 p-1 sm:p-2  inline-flex items-center  ">
+                                                <svg class="w-7 h-7 fill-current" role="img" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z" />
+                                                </svg>
+                                            </button>
+                                            <button
+                                                class="text-green-900 hover:text-green-700 p-1 sm:p-2  inline-flex items-center  ">
+                                                <svg class="w-7 h-7 fill-current" role="img" viewBox="0 0 256 256"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <g>
+                                                        <path
+                                                            d="M218.123122,218.127392 L180.191928,218.127392 L180.191928,158.724263 C180.191928,144.559023 179.939053,126.323993 160.463756,126.323993 C140.707926,126.323993 137.685284,141.757585 137.685284,157.692986 L137.685284,218.123441 L99.7540894,218.123441 L99.7540894,95.9665207 L136.168036,95.9665207 L136.168036,112.660562 L136.677736,112.660562 C144.102746,99.9650027 157.908637,92.3824528 172.605689,92.9280076 C211.050535,92.9280076 218.138927,118.216023 218.138927,151.114151 L218.123122,218.127392 Z M56.9550587,79.2685282 C44.7981969,79.2707099 34.9413443,69.4171797 34.9391618,57.260052 C34.93698,45.1029244 44.7902948,35.2458562 56.9471566,35.2436736 C69.1040185,35.2414916 78.9608713,45.0950217 78.963054,57.2521493 C78.9641017,63.090208 76.6459976,68.6895714 72.5186979,72.8184433 C68.3913982,76.9473153 62.7929898,79.26748 56.9550587,79.2685282 M75.9206558,218.127392 L37.94995,218.127392 L37.94995,95.9665207 L75.9206558,95.9665207 L75.9206558,218.127392 Z M237.033403,0.0182577091 L18.8895249,0.0182577091 C8.57959469,-0.0980923971 0.124827038,8.16056231 -0.001,18.4706066 L-0.001,237.524091 C0.120519052,247.839103 8.57460631,256.105934 18.8895249,255.9977 L237.033403,255.9977 C247.368728,256.125818 255.855922,247.859464 255.999,237.524091 L255.999,18.4548016 C255.851624,8.12438979 247.363742,-0.133792868 237.033403,0.000790807055">
+                                                        </path>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                            <button
+                                                class="text-green-900 hover:text-green-700 p-1 sm:p-2  inline-flex items-center  ">
+                                                <svg class="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                            <!-- Teacher Intro End -->
+
+                            <!-- Footer Section Start -->
+                            <footer
+                                class="flex md:flex-row justify-between flex-col items-center footer px-10 pt-10 bg-base-200 text-base-content bottom-0 pb-20 md:pb-24">
+                                <p class="md:order-1 order-3 font-medium">© Softavia
+                                    <script>
+                                        document.write(new Date().getFullYear());
+                                    </script> | All rights reserved
+                                </p>
+                                <a class="md:order-2 order-1" href="/">
+                                    <img class="w-[8.5rem]" src="{% static 'assets/images/logo.svg' %}" alt="logo">
+                                </a>
+                                <p class="flex md:order-3 order-2 font-medium">Developed by <a
+                                        class="text-blue-500 hover:text-blue-700"
+                                        href="https://shahriarshafin.github.io/" target="_blank"
+                                        rel="noopener noreferrer">SHAFIN</a> & <a
+                                        class="text-blue-500 hover:text-blue-700"
+                                        href="https://shahriarshafin.github.io/" target="_blank"
+                                        rel="noopener noreferrer">SABBIR</a></p>
+                            </footer>
+                            <!-- Footer Section End -->
+                        </div>
+                    </main>
+
+                </div>
+
+                <!-- Mobile Sidebar Wrapper Start -->
+                <div class="drawer-side">
+                    <label for="my-drawer" class="drawer-overlay"></label>
+                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+
+                        <!-- Sidebar Contents Mobile Start-->
+                        <nav aria-label="Main" class="flex-1 pt-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+                            <!-- dynamic Parent Start -->
+                            <a href="{% url 'home:home' %}"
+                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 selected">
+                                <i class="fa-solid fa-newspaper"></i>
+                                <span class="ml-3 text-sm font-medium"> Home </span>
+                            </a>
+                            <!-- dynamic Parent End -->
+
+                            <!-- dynamic Parent with child Start -->
+                            {% for nav_item in nav %}
+                            <details class="group">
+                                <summary
+                                    class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
+                                    <i class="fa-solid fa-hashtag"></i>
+
+                                    <span class="ml-3 text-sm font-medium"> {{ nav_item.menu }} </span>
+
+                                    <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
+                                        <i class="fa-solid fa-angle-down"></i>
+                                    </span>
+                                </summary>
+                                {% for sub in nav_item.submenu %}
+                                <nav class="mt-1.5 ml-8 flex flex-col">
+                                    <a href="/blog.html"
+                                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
+                                        <i class="fa-solid fa-angles-right"></i>
+                                        <span class="ml-3 text-sm font-medium"> {{ sub.name }} </span>
+                                    </a>
+                                </nav>
+                                {% endfor %}
+                            </details>
+                            {% endfor %}
+                            <!-- dynamic Parent with child End -->
+                            <hr class="!my-5">
+                            <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
+
+                            <!-- dynamic Tranding TOPICS Start -->
+                        {% for trend in trending_topics %}
+                            <a href=""
+                                class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                <div>
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <span class="ml-3 text-sm font-medium">{{ trend.trend_name }}</span>
+                                </div>
+                                <div class="bg-gray-100 px-3 py-1 rounded-full text-success text-sm font-semibold">+{{ trend.trend_count }}
+                                </div>
+                            </a>
+                        {% endfor %}
+                            <!-- dynamic Tranding TOPICS End -->
+
+                        </nav>
+                        <!-- Sidebar Contents Mobile End-->
+
+                    </ul>
+                </div>
+                <!-- Mobile Sidebar Wrapper Start -->
+            </div>
+
+            <!-- Main Footer Start -->
+
+            <!-- Main Footer End -->
+        </div>
+        <!-- Right Side Wrapper End -->
+
+    </div>
+
+</body>
+
+
+</html>
