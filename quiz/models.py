@@ -1,8 +1,21 @@
 from django.db import models
 from category.models import SubCategory
+from post.models import Post
 
 
 # Create your models here.
+class QuizSet(models.Model):
+    title_of_set = models.TextField(blank=False, null=False, verbose_name='Write the Title of Your Quiz')
+    sub_category = models.ForeignKey(
+        SubCategory, on_delete=models.CASCADE, verbose_name='Select category for the Quiz Set', blank=False, null=False
+    )
+    post_title = models.ForeignKey(
+        Post, on_delete=models.CASCADE, verbose_name='Select Post Title', blank=True, null=True
+    )
+
+    def __str__(self):
+        return self.title_of_set
+
 
 class Quiz(models.Model):
     choice = [
@@ -11,10 +24,10 @@ class Quiz(models.Model):
         ('C', 'C'),
         ('D', 'D')
     ]
-    sub_category = models.ForeignKey(
-        SubCategory, on_delete=models.CASCADE, verbose_name='Select category for the Question', blank=False, null=False
+
+    title = models.ForeignKey(
+        QuizSet, on_delete=models.CASCADE, verbose_name='Select the Title of Your Quiz', blank=False, null=False
     )
-    title = models.TextField(blank=False, null=False, verbose_name='Write the Title fo Your Quiz')
     question = models.TextField(blank=False, null=False, verbose_name='Question')
     option_a = models.CharField(blank=False, null=False, verbose_name='Option A', max_length=424)
     option_b = models.CharField(blank=False, null=False, verbose_name='Option B', max_length=424)
@@ -25,4 +38,4 @@ class Quiz(models.Model):
                               )
 
     def __str__(self):
-        return self.title
+        return self.title.title_of_set

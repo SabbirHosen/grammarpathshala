@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 
@@ -5,17 +6,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Author" name="author">
-    <!-- dynamic -->
-    <meta content="Write Site Description" name="description">
-    <meta content="keyword1,keyword-2,keyword 3" name="keywords">
-    <!-- dynamic -->
-    <link rel="icon" href="assets/img/favicon.png" type="image/gif" sizes="16x16">
-    <link rel="apple-touch-icon" href="assets/img/favicon.png">
+    <!-- Meta tag for social site sharing -->
+    <meta
+            content="Learning a second language involves not just learning new words for the same concepts, but also a new way of thinking. Online English blog to suit your requirements and learning objectives. Learn to speak with confidence in your academics, at work, and in your study"
+            name="description">
+    <meta content="{{ name }}, grammar pathshala, grammar, pathshala, english, learn" name="keywords">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="{{ name }} | Grammar Pathshala">
+    <meta itemprop="description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta itemprop="image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://grammarpathshala.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ name }} | Grammar Pathshala">
+    <meta property="og:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta property="og:image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ name }} | Grammar Pathshala">
+    <meta name="twitter:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta name="twitter:image" content="{% static 'assets/images/logo.svg' %}">
+    <!-- Meta tag for social site sharing -->
+    <link rel="icon" href="{% static 'assets/img/favicon.png' %}" type="image/gif" sizes="16x16">
+    <link rel="apple-touch-icon" href="{% static 'assets/img/favicon.png' %}">
 
     <title>Blogs | Grammar Pathshala</title>
 
     <!-- dynamic -->
-    <link href="/assets/css/output.css" rel="stylesheet">
+    <link href="{% static '/assets/css/output.css' %}" rel="stylesheet">
     <!-- dynamic -->
     <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -31,102 +52,9 @@
 <body class="overflow-y-hidden overflow-visible bg-slate-100">
 
     <!-- Top Navbar Start -->
-    <div class="bg-white sticky top-0 z-50 border-b-2">
-        <div class="container mx-auto navbar">
-            <div class="flex-none block lg:hidden">
-                <label for="my-drawer" class="mr-3 cursor-pointer">
-                    <i class="fa-solid fa-bars-staggered text-lg active:text-violet-700"></i>
-                </label>
-            </div>
-            <div class="navbar-start">
-                <a href="/">
-                    <img class="w-[8.5rem]" src="/assets/images/logo.svg" alt="logo">
-                </a>
-            </div>
-            <div class="navbar-center hidden lg:flex">
-                <div class="form-control">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search for tag, krywords, articles, and many more"
-                            class="input focus:outline-none focus:outline-offset-0 input-bordered focus:border-primary text-base w-96" />
-                        <button class="btn btn-square">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="navbar-end">
-                <a href="/exercise-home.html" class="btn bg-primary border-none font-manrope">Exercises</a>
-            </div>
-        </div>
-    </div>
-    <!-- Top Navbar End -->
-
-    <div class="flex text-gray-900 container mx-auto h-screen">
-
-        <!--Desktop Sidebar Start -->
-        <aside class="flex-shrink-0 hidden w-64 border-r lg:block">
-            <div class="flex flex-col h-full">
-
-                <!-- Sidebar Contents Start-->
-                <nav aria-label="Main" class="flex-1 pt-7 px-2 space-y-2 overflow-y-hidden hover:overflow-y-auto">
-                    <!-- dynamic Parent Start -->
-                    <a href="/"
-                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
-                        <i class="fa-solid fa-newspaper"></i>
-                        <span class="ml-3 text-sm font-medium"> Home </span>
-                    </a>
-                    <!-- dynamic Parent End -->
-
-                    <!-- dynamic Parent with child Start -->
-                    <details class="group">
-                        <summary
-                            class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
-                            <i class="fa-solid fa-hashtag"></i>
-
-                            <span class="ml-3 text-sm font-medium"> Writing </span>
-
-                            <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
-                                <i class="fa-solid fa-angle-down"></i>
-                            </span>
-                        </summary>
-
-                        <nav class="mt-1.5 ml-8 flex flex-col">
-                            <a href="/blog.html"
-                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 selected">
-                                <i class="fa-solid fa-angles-right"></i>
-                                <span class="ml-3 text-sm font-medium"> Paragraph </span>
-                            </a>
-                        </nav>
-                    </details>
-                    <!-- dynamic Parent with child End -->
-                    <hr class="!my-5">
-                    <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
-
-                    <!-- dynamic Tranding TOPICS Start -->
-                    <a href=""
-                        class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
-                        <div>
-                            <i class="fa-solid fa-bolt"></i>
-                            <span class="ml-3 text-sm font-medium">React</span>
-                        </div>
-                        <div class="bg-gray-200 px-3 py-1 rounded-full text-success text-sm font-semibold">+112
-                        </div>
-                    </a>
-                    <!-- dynamic Tranding TOPICS End -->
-
-                </nav>
-                <!-- Sidebar Contents End-->
-
-                <!-- Sidebar footer Start -->
-
-                <!-- Sidebar footer End -->
-            </div>
-        </aside>
-        <!--Desktop Sidebar End -->
+    {% block desktop_nav %}
+        {% include 'base/desktop_nav.html' %}
+    {% endblock %}
 
         <!-- Right Side Wrapper Start -->
         <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
@@ -231,86 +159,18 @@
                             <!-- Card Section End -->
 
                             <!-- Footer Section Start -->
-                            <footer
-                                class="flex md:flex-row justify-between flex-col items-center footer px-10 pt-10 bg-base-200 text-base-content bottom-0 pb-20 md:pb-24">
-                                <p class="md:order-1 order-3 font-medium">© Softavia
-                                    <script>
-                                        document.write(new Date().getFullYear());
-                                    </script> | All rights reserved
-                                </p>
-                                <a class="md:order-2 order-1" href="/">
-                                    <img class="w-[8.5rem]" src="/assets/images/logo.svg" alt="logo">
-                                </a>
-                                <p class="flex md:order-3 order-2 font-medium">Developed by <a
-                                        class="text-blue-500 hover:text-blue-700"
-                                        href="https://shahriarshafin.github.io/" target="_blank"
-                                        rel="noopener noreferrer">SHAFIN</a> & <a
-                                        class="text-blue-500 hover:text-blue-700"
-                                        href="https://shahriarshafin.github.io/" target="_blank"
-                                        rel="noopener noreferrer">SABBIR</a></p>
-                            </footer>
+                            {% block footer %}
+                                    {% include 'base/footer.html' %}
+                                {% endblock %}
                             <!-- Footer Section End -->
-
+                        </div>
                     </main>
                 </div>
 
                 <!-- Mobile Sidebar Wrapper Start -->
-                <div class="drawer-side">
-                    <label for="my-drawer" class="drawer-overlay"></label>
-                    <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-
-                        <!-- Sidebar Contents Mobile Start-->
-                        <nav aria-label="Main" class="flex-1 pt-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
-                            <!-- dynamic Parent Start -->
-                            <a href="/"
-                                class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700">
-                                <i class="fa-solid fa-newspaper"></i>
-                                <span class="ml-3 text-sm font-medium"> Home </span>
-                            </a>
-                            <!-- dynamic Parent End -->
-
-                            <!-- dynamic Parent with child Start -->
-                            <details class="group">
-                                <summary
-                                    class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 cursor-pointer">
-                                    <i class="fa-solid fa-hashtag"></i>
-
-                                    <span class="ml-3 text-sm font-medium"> Writing </span>
-
-                                    <span class="ml-auto transition duration-300 shrink-0 group-open:-rotate-180">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                    </span>
-                                </summary>
-
-                                <nav class="mt-1.5 ml-8 flex flex-col">
-                                    <a href="/blog.html"
-                                        class="flex items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 selected">
-                                        <i class="fa-solid fa-angles-right"></i>
-                                        <span class="ml-3 text-sm font-medium"> Paragraph </span>
-                                    </a>
-                                </nav>
-                            </details>
-                            <!-- dynamic Parent with child End -->
-                            <hr class="!my-5">
-                            <p class="text-gray-500 font-medium text-sm">TRENDING TOPICS</p>
-
-                            <!-- dynamic Tranding TOPICS Start -->
-                            <a href=""
-                                class="flex justify-between items-center px-2 py-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                <div>
-                                    <i class="fa-solid fa-bolt border-b-indigo-700"></i>
-                                    <span class="ml-3 text-sm font-medium">React</span>
-                                </div>
-                                <div class="bg-gray-100 px-3 py-1 rounded-full text-success text-sm font-semibold">+112
-                                </div>
-                            </a>
-                            <!-- dynamic Tranding TOPICS End -->
-
-                        </nav>
-                        <!-- Sidebar Contents Mobile End-->
-
-                    </ul>
-                </div>
+                {% block mobile_nav %}
+                    {% include 'base/mobile_nav.html' %}
+                {% endblock %}
                 <!-- Mobile Sidebar Wrapper Start -->
             </div>
 

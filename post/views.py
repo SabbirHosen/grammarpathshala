@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post, SubCategory
 from home.code import navbar, trending_topics
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from quiz.models import Quiz
+from quiz.models import Quiz, QuizSet
 
 
 # Create your views here.
@@ -51,7 +51,7 @@ def post_details(request, id):
     post = Post.objects.get(id=id)
     posts_id = Post.objects.filter(sub_category__name__exact=post.sub_category.name).order_by('priority', 'pub_date').values('id')
     list_ids = [i['id'] for i in posts_id]
-    print('Post: ', list_ids)
+    # print('Post: ', list_ids)
     current_position = -1
     count = 0
     for i in list_ids:
@@ -60,7 +60,7 @@ def post_details(request, id):
             break
         else:
             count += 1
-    print(current_position)
+    # print(current_position)
     try:
         has_next = list_ids[current_position + 1]
     except:
@@ -75,14 +75,13 @@ def post_details(request, id):
         has_previous = None
     # print(f'N{has_next} P{has_previous}')
     try:
-        quiz_exist = Quiz.objects.filter(title__iexact=post.title)
+        quiz_exist = QuizSet.objects.filter(post_title__iexact=post.title, sub_category__name__iexact=post.sub_category.name)
         if quiz_exist.exists():
             exercise = post.title
         else:
             exercise = None
     except:
         exercise = None
-
     data = {
         'trending_topics': trending_topics_list,
         'nav': nav_list,
