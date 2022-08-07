@@ -83,7 +83,7 @@
 
                             <!-- Exercise Section Start -->
                             <section class="max-w-4xl select-none">
-                                <form action="{% url 'quiz:check_answer' re_id %}" method="post"> {% csrf_token %}
+                                <form action="">
                                 {% for question in questions %}
                                     <div class="shadow-sm transition rounded-md px-5 py-5 mb-8 bg-gray-50 border">
 
@@ -92,37 +92,62 @@
                                         </h3>
 
                                         <div class="form-control mt-5">
-
-                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
-                                                <input type="radio" name="q_{{ question.question_id }}" value="A" class="mr-3 radio radio-primary" />
-                                                <span class="text-gray-500 text-base"> {{ question.option_A }}</span>
+                                            <!-- use class 'right-ans'/'wrong-ans' to highlight-->
+                                            <label
+                                                class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3  {{ question.visible.A }}">
+                                                <input type="radio" name="q_{{ question.question_id }}" value="A" class="mr-3 radio radio-primary" {{ question.checked.A }}
+                                                    disabled />
+                                                <span class="text-gray-500 text-base"> {{ question.option_A }} </span>
                                             </label>
 
-                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
-                                                <input type="radio" name="q_{{ question.question_id }}" value="B" class="mr-3 radio radio-primary" />
-                                                <span class="text-gray-500 text-base"> {{ question.option_B}}</span>
+                                            <label
+                                                class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 {{ question.visible.B }}">
+                                                <input type="radio" name="q_{{ question.question_id }}" value="B" class="mr-3 radio radio-primary" {{ question.checked.B }} disabled />
+                                                <span class="text-gray-500 text-base"> {{ question.option_B}} </span>
                                             </label>
 
-                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
-                                                <input type="radio" name="q_{{ question.question_id }}" value="C" class="mr-3 radio radio-primary" />
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3  {{ question.visible.C }}">
+                                                <input type="radio" name="q_{{ question.question_id }}" value="C" class="mr-3 radio radio-primary" {{ question.checked.C }}
+                                                    disabled />
                                                 <span class="text-gray-500 text-base"> {{ question.option_C }}</span>
                                             </label>
 
-                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3">
-                                                <input type="radio" name="q_{{ question.question_id }}" value="D" class="mr-3 radio radio-primary" />
+                                            <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 {{ question.visible.D }}">
+                                                <input type="radio" name="q_{{ question.question_id }}" value="D" class="mr-3 radio radio-primary" {{ question.checked.D }}
+                                                    disabled />
                                                 <span class="text-gray-500 text-base"> {{ question.option_D }}</span>
                                             </label>
 
                                         </div>
                                     </div>
-                                {% endfor %}
+                                    {% endfor %}
+
                                     <div class="flex justify-end mb-8">
-                                        <input type="submit" value="Submit"
-                                            class="w-full md:w-auto px-10 btn bg-blue-700 hover:bg-blue-500 border-gray-200 hover:border-gray-200 cursor-pointer"></input>
+                                        <input type="submit" value="submit"
+                                            class="w-full md:w-auto px-10 btn bg-blue-700 hover:bg-blue-500 border-gray-200 hover:border-gray-200 cursor-pointer" disabled></input>
                                     </div>
                                 </form>
 
+                                <!-- modal -->
+                                <label id="resultBtn" for="my-modal-6"></label>
 
+                                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                <div class="modal modal-bottom sm:modal-middle">
+                                    <div class="modal-box text-center bg-[#F1F5F9]">
+
+                                        <div class="text-3xl radial-progress bg-primary text-primary-content border-4 border-primary"
+                                            style="--value:{{ result.percent }}; --size:12rem">{{ result.percent }}%</div>
+                                        <h3 class="font-bold text-2xl my-3">{{ result.tag }}</h3>
+                                        <h3 class="text-base my-3">{{ result.msg}}</h3>
+
+                                        <div class="modal-action flex justify-center">
+                                            <label for="my-modal-6" class="btn">Continue</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- modal -->
                             </section>
                             <!-- Exercise Section End -->
 
@@ -149,6 +174,10 @@
         <!-- Right Side Wrapper End -->
 
     </div>
+    <script>
+        const btnClick = () => document.getElementById("resultBtn").click();
+        btnClick();
+    </script>
 </body>
 
 

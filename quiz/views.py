@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from home.code import navbar, trending_topics
 from .models import Quiz, QuizSet
 from category.models import SubCategory
@@ -57,9 +57,95 @@ def quiz_list(request):
 
 
 def do_exercise(request, id):
-    pass
+    nav_list = navbar()
+    trending_topics_list = trending_topics()
+    questions = Quiz.objects.filter(title_id=id)
+    # title = QuizSet.objects.filter()
+    question_list = []
+    count = 1
+    for question in questions:
+        temp = {
+            'set_title': question.title,
+            'count': count,
+            'question_id': question.id,
+            'question': question.question,
+            'option_A': question.option_a,
+            'option_B': question.option_b,
+            'option_C': question.option_c,
+            'option_D': question.option_d,
+        }
+        question_list.append(temp)
+        count += 1
+    data = {
+        'nav': nav_list,
+        'trending_topics': trending_topics_list,
+        're_id': id,
+        'num_of_questions': len(questions),
+        'name': question_list[0]['set_title'],
+        'questions': question_list
 
+    }
+    print(question_list[0]['set_title'])
+    return render(request, template_name='exercise.html', context=data)
 
 
 def do_exercise_from_post(request, id):
     pass
+
+
+def check_answer(request, id):
+    if request.method == 'POST':
+        nav_list = navbar()
+        trending_topics_list = trending_topics()
+        questions = Quiz.objects.filter(title_id=id)
+        question_list = []
+        count = 1
+        correct = 0
+        for question in questions:
+            gen_id = 'q_'+str(question.id)
+            answer = request.POST[gen_id]
+            visible = {'A': '', 'B': '', 'C': '', 'D': ''}
+            ch = {'A': '', 'B': '', 'C': '', 'D': ''}
+            print(answer)
+            if str(answer).strip().lower() == str(question.answer).strip().lower():
+                correct += 1
+                visible[str(question.answer).strip()] = 'right-ans'
+                ch[str(question.answer).strip()] = 'checked'
+            else:
+                visible[str(answer).strip()] = 'wrong-ans'
+                visible[str(question.answer).strip()] = 'right-ans'
+                ch[str(answer).strip()] = 'checked'
+                ch[str(question.answer).strip()] = 'checked'
+
+            temp = {
+                'set_title': question.title,
+                'count': count,
+                'question_id': question.id,
+                'question': question.question,
+                'option_A': question.option_a,
+                'option_B': question.option_b,
+                'option_C': question.option_c,
+                'option_D': question.option_d,
+                'answer': question.answer,
+                'visible': visible,
+                'checked': ch
+            }
+            question_list.append(temp)
+            count += 1
+            print(temp)
+
+        message = {
+            'percent': (correct/len(questions))*100,
+            'tag': 'Congratulations!',
+            'msg': 'You did a great job in the test',
+        }
+        data = {
+            'nav': nav_list,
+            'trending_topics': trending_topics_list,
+            'num_of_questions': len(questions),
+            'name': question_list[0]['set_title'],
+            'questions': question_list,
+            'result': message
+        }
+        return render(request, template_name='answer.html', context=data)
+    return redirect('/')
