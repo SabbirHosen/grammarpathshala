@@ -4,6 +4,7 @@ app_name = 'quiz'
 
 urlpatterns = [
     path('', views.quiz_list, name='quiz_list'),
-    path('exercise/<str:title>', views.do_exercise, name='do_exercise'),
+    path('exercise/<int:id>', views.do_exercise, name='do_exercise'),
+    path('article/exercise/<int:id>', views.do_exercise_from_post, name='do_exercise_from_post'),
 
 ]

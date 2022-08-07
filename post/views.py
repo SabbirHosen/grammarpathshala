@@ -75,9 +75,9 @@ def post_details(request, id):
         has_previous = None
     # print(f'N{has_next} P{has_previous}')
     try:
-        quiz_exist = QuizSet.objects.filter(post_title__iexact=post.title, sub_category__name__iexact=post.sub_category.name)
+        quiz_exist = QuizSet.objects.filter(post_title_id=post.id, sub_category__name__iexact=post.sub_category.name)
         if quiz_exist.exists():
-            exercise = post.title
+            exercise = post.id
         else:
             exercise = None
     except:

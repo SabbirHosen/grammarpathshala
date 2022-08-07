@@ -108,7 +108,7 @@
 
                                 <!-- use class 'hidden' to hide this field-->
                             {% if exercise != None %}
-                                <a href="{% url 'quiz:do_exercise' name %}" role="button" class="btn">
+                                <a href="{% url 'quiz:do_exercise_from_post' exercise %}" role="button" class="btn">
                                     Exercise
                                 </a>
                             {% else %}

@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ['sub_category', 'priority']
     list_filter = ('sub_category', 'pub_date')
     ordering = ['priority']
-    search_fields = ['title', 'sub_category', 'description']
+    search_fields = ['title', 'description']
 
 
 class TrendingAdmin(admin.ModelAdmin):

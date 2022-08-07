@@ -10,30 +10,30 @@
     <meta
             content="Learning a second language involves not just learning new words for the same concepts, but also a new way of thinking. Online English blog to suit your requirements and learning objectives. Learn to speak with confidence in your academics, at work, and in your study"
             name="description">
-    <meta content="{{ name }}, grammar pathshala, grammar, pathshala, english, learn" name="keywords">
+    <meta content="quizzes,'quiz', 'exercise', grammar pathshala, grammar, pathshala, english, learn" name="keywords">
 
     <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="{{ name }} | Grammar Pathshala">
+    <meta itemprop="name" content="Quizzes | Grammar Pathshala">
     <meta itemprop="description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
     <meta itemprop="image" content="{% static 'assets/images/logo.svg' %}">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://grammarpathshala.com/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ name }} | Grammar Pathshala">
+    <meta property="og:title" content="Quizzes | Grammar Pathshala">
     <meta property="og:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
     <meta property="og:image" content="{% static 'assets/images/logo.svg' %}">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ name }} | Grammar Pathshala">
+    <meta name="twitter:title" content="Quizzes | Grammar Pathshala">
     <meta name="twitter:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
     <meta name="twitter:image" content="{% static 'assets/images/logo.svg' %}">
     <!-- Meta tag for social site sharing -->
     <link rel="icon" href="{% static 'assets/img/favicon.png' %}" type="image/gif" sizes="16x16">
     <link rel="apple-touch-icon" href="{% static 'assets/img/favicon.png' %}">
 
-    <title>Blogs | Grammar Pathshala</title>
+    <title>Quizzes | Grammar Pathshala</title>
 
     <!-- dynamic -->
     <link href="{% static '/assets/css/output.css' %}" rel="stylesheet">
@@ -75,24 +75,24 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h2 class="text-3xl font-semibold text-gray-900">Grammar Pathshala' Quizzes
+                                        <h2 class="text-3xl font-semibold text-gray-900">Grammar Pathshala Quizzes
                                         </h2>
                                         <p class="text-base font-medium text-gray-500"><i
-                                                class="fa-solid fa-newspaper mr-2"></i>27.3K Question Set
+                                                class="fa-solid fa-newspaper mr-2"></i>{{ count_set }} Question Set
                                         </p>
                                     </div>
                                 </div>
 
                                 <div class="space-y-10">
-
+                                {% for s in sets %}
                                     <div class="flex flex-col border-l-2 border-purple-500">
                                         <h2 class="text-2xl font-semibold ml-2">
-                                            Parts of Speech
+                                            {{ s.category }}
                                         </h2>
 
                                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-4 gap-4 mx-3">
-
-                                            <a href="/exercise.html">
+                                            {% for q in s.question_sets %}
+                                            <a href="{% url 'quiz:do_exercise' q.question_set_id %}">
                                                 <div class="flex items-start p-4 rounded-md shadow-md bg-white">
                                                     <div
                                                         class="flex items-center justify-center bg-blue-50 h-12 w-12 rounded-full border border-blue-100">
@@ -100,60 +100,20 @@
                                                     </div>
 
                                                     <div class="ml-4">
-                                                        <h2 class="font-semibold">Tag questions
+                                                        <h2 class="font-semibold">{{ q.question_set_title}}
                                                         </h2>
 
                                                         <p class="mt-2 text-sm text-gray-500"><span
-                                                                class="font-semibold">40</span> Questions</p>
+                                                                class="font-semibold">{{ q.question_count }}</span> Questions</p>
                                                     </div>
                                                 </div>
                                             </a>
+                                            {% endfor %}
 
-                                            <a href="/exercise.html">
-                                                <div class="flex items-start p-4 rounded-md shadow-md bg-white">
-                                                    <div
-                                                        class="flex items-center justify-center bg-blue-50 h-12 w-12 rounded-full border border-blue-100">
-                                                        <i class="fa-solid fa-question text-blue-600"></i>
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <h2 class="font-semibold">Tag questions</h2>
-
-                                                        <p class="mt-2 text-sm text-gray-500">40 Questions</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-                                            <a href="/exercise.html">
-                                                <div class="flex items-start p-4 rounded-md shadow-md bg-white">
-                                                    <div
-                                                        class="flex items-center justify-center bg-blue-50 h-12 w-12 rounded-full border border-blue-100">
-                                                        <i class="fa-solid fa-question text-blue-600"></i>
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <h2 class="font-semibold">Tag questions</h2>
-
-                                                        <p class="mt-2 text-sm text-gray-500">40 Questions</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-                                            <a href="/exercise.html">
-                                                <div class="flex items-start p-4 rounded-md shadow-md bg-white">
-                                                    <div
-                                                        class="flex items-center justify-center bg-blue-50 h-12 w-12 rounded-full border border-blue-100">
-                                                        <i class="fa-solid fa-question text-blue-600"></i>
-                                                    </div>
-
-                                                    <div class="ml-4">
-                                                        <h2 class="font-semibold">Tag questions</h2>
-                                                        <p class="mt-2 text-sm text-gray-500">40 Questions</p>
-                                                    </div>
-                                                </div>
-                                            </a>
                                         </div>
                                     </div>
+
+                                    {% endfor %}
                                 </div>
                             </section>
                             <!-- Card Section End -->
