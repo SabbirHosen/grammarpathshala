@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .code import navbar, trending_topics, recent_post
+from .code import navbar, trending_topics, recent_post, stats
 from category.models import Category, SubCategory
 from post.models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -10,10 +10,12 @@ def home(request):
     nav_list = navbar()
     trending_topics_list = trending_topics()
     recent_posts = recent_post()
+    statistic = stats()
     data = {
         'nav': nav_list,
         'trending_topics': trending_topics_list,
-        'recent_posts': recent_posts
+        'recent_posts': recent_posts,
+        'statistic': statistic
     }
     # print(recent_posts)
     return render(request, template_name='base/index_test.html', context=data)
@@ -38,7 +40,8 @@ def search(request):
             }
             list_post.append(temp)
         data = {
-            'name': 'Search for '+text,
+            'name': 'Search for ' + text,
+            'form_value': text,
             'trending_topics': trending_topics_list,
             'nav': nav_list,
             'post_count': len(list_post),

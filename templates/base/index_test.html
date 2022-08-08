@@ -99,7 +99,7 @@
                                                 <i class="fa-solid fa-newspaper text-3xl"></i>
                                             </div>
                                             <div class="stat-title">Total Articles</div>
-                                            <div class="stat-value text-primary">426</div>
+                                            <div class="stat-value text-primary">{{ statistic.post_count }}</div>
                                             <div class="stat-desc">Explore Yourself Confidently</div>
                                         </div>
 
@@ -108,7 +108,7 @@
                                                 <i class="fa-solid fa-list-check text-3xl"></i>
                                             </div>
                                             <div class="stat-title">Total Exercises</div>
-                                            <div class="stat-value text-secondary">700</div>
+                                            <div class="stat-value text-secondary">{{ statistic.exercise_count }}</div>
                                             <div class="stat-desc">Unlimited Practice</div>
                                         </div>
 
@@ -196,7 +196,7 @@
                                                 <div class="flex items-center space-x-4">
                                                     <div class="flex-auto">
                                                         <div class="text-base text-slate-900 font-semibold ">
-                                                            <a href="/blog-details.html">
+                                                            <a href="{% url 'post:post_details' recent_p.p_id %}">
                                                                 {{ recent_p.p_title }}</a>
                                                         </div>
                                                     </div>

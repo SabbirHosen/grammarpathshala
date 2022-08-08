@@ -6,11 +6,11 @@ import random
 
 
 def navbar():
-    categories = Category.objects.all()
+    categories = Category.objects.all().order_by('name')
     list_nav = []
     for category in categories:
         try:
-            subcategories = SubCategory.objects.filter(parent=category)
+            subcategories = SubCategory.objects.filter(parent=category).order_by('name')
             child = []
             if len(subcategories) != 0:
                 for c in subcategories:
@@ -88,7 +88,7 @@ def trending_topics():
 
 
 def recent_post():
-    posts = Post.objects.all().order_by('pub_date')[0:9]
+    posts = Post.objects.all().order_by('-pub_date')[0:9]
     posts_list = []
     for post in posts:
         temp = {
@@ -99,3 +99,14 @@ def recent_post():
         posts_list.append(temp)
 
     return posts_list
+
+
+def stats():
+    post_count = Post.objects.all().count()
+    exercise_count = Quiz.objects.all().count()
+    data = {
+        'post_count': post_count,
+        'exercise_count': exercise_count
+    }
+    return data
+
