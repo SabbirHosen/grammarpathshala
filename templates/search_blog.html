@@ -1,0 +1,144 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Author" name="author">
+    <!-- Meta tag for social site sharing -->
+    <meta
+            content="Learning a second language involves not just learning new words for the same concepts, but also a new way of thinking. Online English blog to suit your requirements and learning objectives. Learn to speak with confidence in your academics, at work, and in your study"
+            name="description">
+    <meta content="{{ name }}, grammar pathshala, grammar, pathshala, english, learn" name="keywords">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="{{ name }} | Grammar Pathshala">
+    <meta itemprop="description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta itemprop="image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://grammarpathshala.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ name }} | Grammar Pathshala">
+    <meta property="og:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta property="og:image" content="{% static 'assets/images/logo.svg' %}">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ name }} | Grammar Pathshala">
+    <meta name="twitter:description" content="Build a Deep, Solid Understanding in English with Grammar Pathshala">
+    <meta name="twitter:image" content="{% static 'assets/images/logo.svg' %}">
+    <!-- Meta tag for social site sharing -->
+    <link rel="icon" href="{% static 'assets/img/favicon.png' %}" type="image/gif" sizes="16x16">
+    <link rel="apple-touch-icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <title>{{ name }} | Grammar Pathshala</title>
+
+    <!-- dynamic -->
+    <link href="{% static '/assets/css/output.css' %}" rel="stylesheet">
+    <!-- dynamic -->
+    <!-- <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="overflow-y-hidden overflow-visible bg-slate-100">
+
+    <!-- Top Navbar Start -->
+    {% block desktop_nav %}
+        {% include 'base/desktop_nav.html' %}
+    {% endblock %}
+
+        <!-- Right Side Wrapper Start -->
+        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+            <div class="drawer">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content pt-10">
+
+                    <main>
+                        <div class="flex-1 overflow-x-hidden overflow-y-auto bg-white">
+
+                            <!-- Card Section Start -->
+                            <section>
+                                <div class="flex justify-center items-center mb-14">
+                                    <div class="hidden md:block">
+                                        <div
+                                            class="bg-green-100 flex justify-center items-center h-14 w-14 rounded-md mr-4">
+                                            <i class="text-green-500 text-2xl fa-solid fa-hashtag"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2 class="text-3xl font-semibold text-gray-900">{{ name }}
+                                        </h2>
+                                        <p class="text-base font-medium text-gray-500"><i
+                                                class="fa-solid fa-newspaper mr-2"></i>{{ post_count}} Articles
+                                        </p>
+                                    </div>
+                                </div>
+                                {% for post in posts %}
+                                <a href="{% url 'post:post_details' post.id %}">
+                                    <div class="shadow-sm transition rounded-md px-5 py-5 mb-8 bg-gray-50 border">
+                                        <div class="mb-3">
+                                            {% for badge in post.badgeTitle %}
+                                            <span
+                                                class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium rounded px-2.5 py-0.5">
+                                                <i class="fa-solid fa-hashtag"></i>
+                                                {{ badge }}
+                                            </span>
+                                            {% endfor %}
+                                        </div>
+                                        <h3 class="text-xl font-semibold text-gray-700 hover:text-gray-900">
+                                        {{ post.postTitle }}
+                                        </h3>
+
+                                        <p class="text-gray-500 text-base mt-3">
+                                            {{ post.postDescription }}
+                                        </p>
+
+                                        <p class="flex justify-end items-center text-sm font-medium text-gray-500 mt-2">
+                                            <i class="fa-solid fa-book-open mr-2"></i>{{ post.postDuration }} min read
+                                        </p>
+
+                                    </div>
+                                </a>
+                                {% endfor %}
+
+
+                            </section>
+                            <!-- Card Section End -->
+
+                            <!-- Footer Section Start -->
+                                {% block footer %}
+                                    {% include 'base/footer.html' %}
+                                {% endblock %}
+                            <!-- Footer Section End -->
+                        </div>
+                    </main>
+                </div>
+
+                <!-- Mobile Sidebar Wrapper Start -->
+                    {% block mobile_nav %}
+                        {% include 'base/mobile_nav.html' %}
+                    {% endblock %}
+                <!-- Mobile Sidebar Wrapper Start -->
+            </div>
+
+            <!-- Main Footer Start -->
+
+            <!-- Main Footer End -->
+        </div>
+        <!-- Right Side Wrapper End -->
+
+    </div>
+
+</body>
+
+
+</html>
