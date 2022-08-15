@@ -21,6 +21,9 @@ def home(request):
     return render(request, template_name='base/index_test.html', context=data)
 
 
+def error_handler(request, exception=None):
+    return redirect('home:home')
+
 def search(request):
     if request.method == 'GET':
         nav_list = navbar()
