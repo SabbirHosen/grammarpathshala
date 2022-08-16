@@ -139,10 +139,21 @@ def check_answer(request, id):
             count += 1
             print(temp)
 
+        percent = (correct / len(questions)) * 100
+        if percent <= 40:
+            tag = 'Try again...'
+            msg = 'Practice more and more'
+        elif percent < 80:
+            tag = 'Good Job...'
+            msg = 'Needs to study hard'
+        else:
+            tag = 'Congratulations!'
+            msg = 'You did a great job'
+
         message = {
             'percent': (correct / len(questions)) * 100,
-            'tag': 'Congratulations!',
-            'msg': 'You did a great job in the test',
+            'tag': tag,
+            'msg': msg,
         }
         data = {
             'nav': nav_list,

@@ -28,7 +28,7 @@ def post_list(request, id):
     # print(list_post)
         # PAGINATOR start
         page = request.GET.get('page', 1)
-        paginator = Paginator(list_post, 1)
+        paginator = Paginator(list_post, 10)
         try:
             p_post = paginator.page(page)
         except PageNotAnInteger:
