@@ -12,7 +12,7 @@ def post_list(request, id):
     # print(id)
     subcategory = SubCategory.objects.get(id=id)
     # posts = Post.objects.filter(sub_category_id=id).order_by('property', 'pub_date')
-    posts = Post.objects.filter(sub_category__name__exact=subcategory.name).order_by('priority', 'pub_date')
+    posts = Post.objects.filter(sub_category__name__exact=subcategory.name).order_by('priority', '-pub_date')
 
     list_post = []
     for post in posts:
@@ -28,7 +28,7 @@ def post_list(request, id):
     # print(list_post)
         # PAGINATOR start
         page = request.GET.get('page', 1)
-        paginator = Paginator(list_post, 1)
+        paginator = Paginator(list_post, 10)
         try:
             p_post = paginator.page(page)
         except PageNotAnInteger:
@@ -49,7 +49,7 @@ def post_details(request, id):
     nav_list = navbar()
     trending_topics_list = trending_topics()
     post = Post.objects.get(id=id)
-    posts_id = Post.objects.filter(sub_category__name__exact=post.sub_category.name).order_by('priority', 'pub_date').values('id')
+    posts_id = Post.objects.filter(sub_category__name__exact=post.sub_category.name).order_by('priority', '-pub_date').values('id')
     list_ids = [i['id'] for i in posts_id]
     # print('Post: ', list_ids)
     current_position = -1
@@ -75,13 +75,17 @@ def post_details(request, id):
         has_previous = None
     # print(f'N{has_next} P{has_previous}')
     try:
-        quiz_exist = QuizSet.objects.filter(post_title_id=post.id, sub_category__name__iexact=post.sub_category.name)
+        quiz_exist = QuizSet.objects.filter(post_title_id=post.id, sub_category__name__iexact=post.sub_category.name)[0:1]
         if quiz_exist.exists():
-            exercise = post.id
+            for quiz in quiz_exist:
+                title_id = quiz.id
+            # exercise = post.id
         else:
-            exercise = None
+            title_id = None
+            # exercise = None
     except:
-        exercise = None
+        title_id = None
+        # exercise = None
     data = {
         'trending_topics': trending_topics_list,
         'nav': nav_list,
@@ -92,7 +96,7 @@ def post_details(request, id):
         'post_des': post.description,
         'post': post.post,
         'badge': [post.sub_category.parent.name, post.sub_category.name],
-        'exercise': exercise,
+        'exercise': title_id,
 
     }
     return render(request, template_name='blog-details.html', context=data)

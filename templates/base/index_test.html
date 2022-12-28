@@ -78,10 +78,7 @@
                                                 class="inline bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7c3aed_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-6xl leading-[1.2] tracking-tighter text-transparent lg:text-left">
                                                 Understanding in English!</span></h1>
                                         <h2 class="text-xl font-medium leading-tight text-slate-600 mb-10">
-                                            Learning a second language involves not just learning new words for the same
-                                            concepts, but also a new way of thinking.
-                                            Online English blog to suit your requirements and learning objectives. Learn
-                                            to speak with confidence in your academics, at work, and in your study
+                                            Learning a second language involves not just learning new words for the same concepts, but also a new way of thinking. Online English blog to suit your requirements and learning objectives. Learn grammar with confidence,  build your basic.
 
                                         </h2>
                                     </div>
@@ -99,7 +96,7 @@
                                                 <i class="fa-solid fa-newspaper text-3xl"></i>
                                             </div>
                                             <div class="stat-title">Total Articles</div>
-                                            <div class="stat-value text-primary">426</div>
+                                            <div class="stat-value text-primary">{{ statistic.post_count }}</div>
                                             <div class="stat-desc">Explore Yourself Confidently</div>
                                         </div>
 
@@ -108,7 +105,7 @@
                                                 <i class="fa-solid fa-list-check text-3xl"></i>
                                             </div>
                                             <div class="stat-title">Total Exercises</div>
-                                            <div class="stat-value text-secondary">700</div>
+                                            <div class="stat-value text-secondary">{{ statistic.exercise_count }}</div>
                                             <div class="stat-desc">Unlimited Practice</div>
                                         </div>
 
@@ -196,7 +193,7 @@
                                                 <div class="flex items-center space-x-4">
                                                     <div class="flex-auto">
                                                         <div class="text-base text-slate-900 font-semibold ">
-                                                            <a href="/blog-details.html">
+                                                            <a href="{% url 'post:post_details' recent_p.p_id %}">
                                                                 {{ recent_p.p_title }}</a>
                                                         </div>
                                                     </div>
@@ -224,23 +221,20 @@
                                     <div class="flex justify-start px-5 -mt-12 mb-5">
                                         <span clspanss="block relative h-32 w-32">
                                             <img alt="teacher_image"
-                                                src="https://media-exp1.licdn.com/dms/image/C5603AQHKCW8cON0HdA/profile-displayphoto-shrink_200_200/0/1614262165131?e=1662595200&v=beta&t=KVeVFS3MO5Jwr0RR1LDD08YmIwibr-bkhAaa2e1cAtI"
+                                                src="{% static 'assets/img/rubel.jpeg' %}"
                                                 class="mx-auto object-cover rounded-full h-24 w-24 bg-white p-1" />
                                         </span>
                                     </div>
 
                                     <div class="px-7 mb-8">
-                                        <h2 class="text-3xl font-bold text-green-800 ">Sabbir Hosen</h2>
-                                        <p class="text-gray-400 mt-2 ">Backend Dev | Data Scientist</p>
-                                        <p class="mt-2 text-gray-600 ">Lorem ipsum dolor sit amet
-                                            consectetur, adipisicing elit.
-                                            Asperiores molestiae vitae odio non commodi itaque quisquam incidunt
-                                            doloribus fugit nesciunt vitae odio non commodi itaque quisquam incidunt
-                                            doloribus fugit nesciunt.</p>
+                                        <h2 class="text-3xl font-bold text-green-800 ">Md. Ariful Islam</h2>
+                                        <p class="text-gray-400 mt-2 ">Author | Instructor</p>
+                                        <p class="mt-2 text-gray-600 ">Since 2012, I have been engaged with English teaching profession. I currently work at South Point School & College as a Senior Teacher. I graduated from Jagannath University with a Master of Arts in English Literature.</p>
                                         <div
                                             class="justify-center px-4 py-2 cursor-pointer bg-green-900 max-w-min mx-auto mt-8 rounded-lg text-gray-300 hover:bg-green-800 hover:text-gray-100">
-                                            sabbirhosen@gmail.com
+                                            airubel82@gmail.com
                                         </div>
+                                        <!--
                                         <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8">
                                             <button
                                                 class="text-green-900 hover:text-green-700 p-1 sm:p-2 inline-flex items-center ">
@@ -286,6 +280,7 @@
                                                 </svg>
                                             </button>
                                         </div>
+                                        -->
                                     </div>
 
                                 </div>

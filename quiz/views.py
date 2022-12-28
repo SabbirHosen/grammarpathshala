@@ -85,12 +85,8 @@ def do_exercise(request, id):
         'questions': question_list
 
     }
-    print(question_list[0]['set_title'])
+    # print(question_list[0]['set_title'])
     return render(request, template_name='exercise.html', context=data)
-
-
-def do_exercise_from_post(request, id):
-    pass
 
 
 def check_answer(request, id):
@@ -102,20 +98,28 @@ def check_answer(request, id):
         count = 1
         correct = 0
         for question in questions:
-            gen_id = 'q_'+str(question.id)
-            answer = request.POST[gen_id]
+            gen_id = 'q_' + str(question.id)
+            # print(gen_id)
+            try:
+                answer = request.POST[gen_id]
+            except:
+                answer = None
+
             visible = {'A': '', 'B': '', 'C': '', 'D': ''}
             ch = {'A': '', 'B': '', 'C': '', 'D': ''}
-            print(answer)
+            dis = {'A': 'disabled', 'B': 'disabled', 'C': 'disabled', 'D': 'disabled'}
+            # print(answer)
             if str(answer).strip().lower() == str(question.answer).strip().lower():
                 correct += 1
                 visible[str(question.answer).strip()] = 'right-ans'
                 ch[str(question.answer).strip()] = 'checked'
+                dis[str(question.answer).strip()] = ''
             else:
                 visible[str(answer).strip()] = 'wrong-ans'
                 visible[str(question.answer).strip()] = 'right-ans'
                 ch[str(answer).strip()] = 'checked'
-                ch[str(question.answer).strip()] = 'checked'
+                # ch[str(question.answer).strip()] = 'checked'
+                dis[str(answer).strip()] = ''
 
             temp = {
                 'set_title': question.title,
@@ -128,16 +132,28 @@ def check_answer(request, id):
                 'option_D': question.option_d,
                 'answer': question.answer,
                 'visible': visible,
-                'checked': ch
+                'checked': ch,
+                'disabled': dis
             }
             question_list.append(temp)
             count += 1
             print(temp)
 
+        percent = (correct / len(questions)) * 100
+        if percent <= 40:
+            tag = 'Try again...'
+            msg = 'Practice more and more'
+        elif percent < 80:
+            tag = 'Good Job...'
+            msg = 'Needs to study hard'
+        else:
+            tag = 'Congratulations!'
+            msg = 'You did a great job'
+
         message = {
-            'percent': (correct/len(questions))*100,
-            'tag': 'Congratulations!',
-            'msg': 'You did a great job in the test',
+            'percent': (correct / len(questions)) * 100,
+            'tag': tag,
+            'msg': msg,
         }
         data = {
             'nav': nav_list,

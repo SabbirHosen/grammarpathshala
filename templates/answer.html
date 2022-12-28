@@ -96,25 +96,25 @@
                                             <label
                                                 class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3  {{ question.visible.A }}">
                                                 <input type="radio" name="q_{{ question.question_id }}" value="A" class="mr-3 radio radio-primary" {{ question.checked.A }}
-                                                    disabled />
+                                                    {{ question.disabled.A }} />
                                                 <span class="text-gray-500 text-base"> {{ question.option_A }} </span>
                                             </label>
 
                                             <label
                                                 class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 {{ question.visible.B }}">
-                                                <input type="radio" name="q_{{ question.question_id }}" value="B" class="mr-3 radio radio-primary" {{ question.checked.B }} disabled />
+                                                <input type="radio" name="q_{{ question.question_id }}" value="B" class="mr-3 radio radio-primary" {{ question.checked.B }} {{ question.disabled.B }} />
                                                 <span class="text-gray-500 text-base"> {{ question.option_B}} </span>
                                             </label>
 
                                             <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3  {{ question.visible.C }}">
                                                 <input type="radio" name="q_{{ question.question_id }}" value="C" class="mr-3 radio radio-primary" {{ question.checked.C }}
-                                                    disabled />
+                                                    {{ question.disabled.C }} />
                                                 <span class="text-gray-500 text-base"> {{ question.option_C }}</span>
                                             </label>
 
                                             <label class="flex items-center cursor-pointer mb-3 rounded-md px-3 py-3 {{ question.visible.D }}">
                                                 <input type="radio" name="q_{{ question.question_id }}" value="D" class="mr-3 radio radio-primary" {{ question.checked.D }}
-                                                    disabled />
+                                                    {{ question.disabled.D }} />
                                                 <span class="text-gray-500 text-base"> {{ question.option_D }}</span>
                                             </label>
 
