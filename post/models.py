@@ -8,7 +8,7 @@ from category.models import SubCategory
 # post
 class Post(models.Model):
     sub_category = models.ForeignKey(
-        SubCategory, on_delete=models.CASCADE, verbose_name='Select category for the Post', blank=False, null=False
+        SubCategory, on_delete=models.PROTECT, verbose_name='Select category for the Post', blank=False, null=False
     )
     title = models.TextField(blank=False, null=False, verbose_name='Head Line of the post')
     description = models.TextField(blank=True, null=True, verbose_name='Write a short description of your post')

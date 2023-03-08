@@ -7,10 +7,10 @@ from post.models import Post
 class QuizSet(models.Model):
     title_of_set = models.TextField(blank=False, null=False, verbose_name='Write the Title of Your Quiz')
     sub_category = models.ForeignKey(
-        SubCategory, on_delete=models.CASCADE, verbose_name='Select category for the Quiz Set', blank=False, null=False
+        SubCategory, on_delete=models.PROTECT, verbose_name='Select category for the Quiz Set', blank=False, null=False
     )
     post_title = models.ForeignKey(
-        Post, on_delete=models.CASCADE, verbose_name='Select Post Title', blank=True, null=True
+        Post, on_delete=models.SET_NULL, verbose_name='Select Post Title', blank=True, null=True
     )
 
     def __str__(self):

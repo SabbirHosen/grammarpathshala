@@ -18,11 +18,12 @@ def home(request):
         'statistic': statistic
     }
     # print(recent_posts)
-    return render(request, template_name='base/index_test.html', context=data)
+    return render(request, template_name='base/index.html', context=data)
 
 
 def error_handler(request, exception=None):
     return redirect('home:home')
+
 
 def search(request):
     if request.method == 'GET':
@@ -53,4 +54,3 @@ def search(request):
         }
         return render(request, template_name='search_blog.html', context=data)
     return redirect('/')
-

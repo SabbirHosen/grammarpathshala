@@ -75,6 +75,7 @@ def post_details(request, id):
         has_previous = None
     # print(f'N{has_next} P{has_previous}')
     try:
+        title_id = None
         quiz_exist = QuizSet.objects.filter(post_title_id=post.id, sub_category__name__iexact=post.sub_category.name)[0:1]
         if quiz_exist.exists():
             for quiz in quiz_exist:
@@ -86,6 +87,7 @@ def post_details(request, id):
     except:
         title_id = None
         # exercise = None
+
     data = {
         'trending_topics': trending_topics_list,
         'nav': nav_list,
